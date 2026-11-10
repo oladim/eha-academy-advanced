@@ -27,35 +27,6 @@ To build the static site:
 npm run build      # output goes to the build/ folder
 ```
 
-## Publishing (GitHub Pages)
-
-The site deploys automatically with GitHub Actions (`.github/workflows/deploy.yml`) on every push to
-`main`. One-time setup: in the repository, go to **Settings → Pages → Build and deployment → Source**
-and choose **GitHub Actions**. The site then appears at
-`https://<your-username>.github.io/<repo-name>/`.
-
-`homepage` is set to `"."` in `package.json`, so the app uses relative paths and works under any
-GitHub Pages sub-path.
-
-## How it's organised
-
-```
-public/index.html         the page shell
-src/
-  index.js                entry point (font imports)
-  App.jsx                 hash router: home vs. a module
-  Home.jsx                the module picker (landing screen)
-  ModuleView.jsx          sidebar + lesson shell, shared by both modules
-  data.js                 the two modules and their lesson lists
-  styles.css              the whole "Ink & Gold" theme (design tokens at the top)
-  components/             Code, TryIt, ReactTryIt, Quiz, Bits (shared by both modules)
-  lessons1/               Module 1 lessons + index.js (order & titles)
-  lessons2/               Module 2 lessons + index.js (order & titles)
-```
-
 Each student's progress is saved in their own browser (localStorage), per module.
 
-### Changing the look
 
-All colours, fonts and shadows are CSS variables at the top of `src/styles.css`. The accent gold is
-`--gold`; the secondary blue is `--blue`. Change those two and the whole site follows.
